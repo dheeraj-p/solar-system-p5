@@ -30,7 +30,6 @@ class Body {
       if (this.mass > body.mass) return acc;
       const force = p5.Vector.sub(body.getPosition(), this.pos);
       const rSq = force.magSq();
-      console.log('Here', force);
       force.setMag((G_CONSTANT * this.mass * body.getMass()) / rSq);
       return p5.Vector.add(force, acc);
     }, createVector(0, 0));
