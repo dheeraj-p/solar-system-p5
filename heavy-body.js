@@ -1,4 +1,5 @@
 const G_CONSTANT = 2;
+let DRAW_ARROW = true;
 
 class Body {
   constructor(pos, mass, radius, vel, color) {
@@ -11,10 +12,15 @@ class Body {
 
   move() {
     this.pos.add(this.vel);
+    push();
     fill(this.color);
-    ellipse(this.pos.x, this.pos.y, this.radius, this.radius);
-    if (!this.vel.equals(createVector(0, 0)))
-      drawArrow(this.pos, p5.Vector.mult(this.vel, 5), 'white');
+    noStroke();
+    translate(this.pos.x - width/2, this.pos.y - height/2);
+    sphere(this.radius);
+    pop();
+    // ellipse(this.pos.x, this.pos.y, this.radius, this.radius);
+    // if (!this.vel.equals(createVector(0, 0)) && DRAW_ARROW)
+    //   drawArrow(this.pos, p5.Vector.mult(this.vel, 5), 'white');
   }
 
   getMass() {
@@ -33,7 +39,7 @@ class Body {
       force.setMag((G_CONSTANT * this.mass * body.getMass()) / rSq);
       return p5.Vector.add(force, acc);
     }, createVector(0, 0));
-    
+
     const acceleration = p5.Vector.div(netForce, this.mass);
     this.vel.add(acceleration);
   }
