@@ -3,9 +3,9 @@ let bodies;
 function setup(){
   createCanvas(1000, 900);
   bodies = [
-    new Body(createVector(400,200), 10, 20, createVector(4, -1), 'skyblue'),
-    new Body(createVector(608,706), 1, 15, createVector(2, -2.6), 'green'),
-    new Body(createVector(500, 400), 3000, 50, createVector(0, 0), 'orange')
+    new Body(createVector(300,200), 300, 30, createVector(-1.5, 1.5), 'skyblue'),
+    new Body(createVector(280,180), 1, 10, createVector(2, -2), 'gray'),
+    new Body(createVector(500, 400), 1000, 80, createVector(0, 0), 'orange')
   ];
 }
 

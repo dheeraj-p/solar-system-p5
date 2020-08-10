@@ -33,8 +33,7 @@ class Body {
       force.setMag((G_CONSTANT * this.mass * body.getMass()) / rSq);
       return p5.Vector.add(force, acc);
     }, createVector(0, 0));
-
-    console.log(netForce);
+    
     const acceleration = p5.Vector.div(netForce, this.mass);
     this.vel.add(acceleration);
   }
