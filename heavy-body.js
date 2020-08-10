@@ -2,20 +2,23 @@ const G_CONSTANT = 2;
 let DRAW_ARROW = true;
 
 class Body {
-  constructor(pos, mass, radius, vel, color) {
+  constructor(pos, mass, radius, vel, texture, isLightSource) {
     this.mass = mass;
     this.radius = radius;
     this.vel = vel;
     this.pos = pos;
-    this.color = color;
+    this.texture = texture;
+    this.isLightSource = isLightSource;
   }
 
   move() {
     this.pos.add(this.vel);
     push();
-    fill(this.color);
+    if(this.isLightSource) noLights();
+    texture(this.texture);
     noStroke();
-    translate(this.pos.x - width/2, this.pos.y - height/2);
+    translate(this.pos.x - width / 2, this.pos.y - height / 2);
+    rotate(millis()/800);
     sphere(this.radius);
     pop();
     // ellipse(this.pos.x, this.pos.y, this.radius, this.radius);
